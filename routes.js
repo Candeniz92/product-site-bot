@@ -66,9 +66,9 @@ module.exports = function (app, passport) {
 				let sunucu = client.guilds.cache.get(process.env.GUILD_ID);
 				let kanal = sunucu.channels.cache.find(c => c.name === `ticket-${req.user.discordId}`);
 				let user = sunucu.members.cache.get(req.user.discordId);
+				if(!user) { res.redirect('https://discord.gg/pyaFsHRWEG'); return }
 				let yazi = process.env.PRODUCT_MESSAGE;
 			  	let mesajj = yazi.replace(/`?\?user`?/g, `${req.user.name}#${req.user.discriminator}`).replace(/`?\?product`?/g, `${data.name}`);
-				if(!user) { res.redirect('https://discord.gg/pyaFsHRWEG'); }
 			  const embed = new MessageEmbed()
 			  .setTitle(mesajj)
 			  .setFooter({ text: `To close the ticket: type ${prefix}close`})
