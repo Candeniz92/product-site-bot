@@ -4,22 +4,31 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./server.js && node ./ticket-bot/index.js"
+    "bot": "node ./ticket-bot/index.js",
+    "site": "node ./server.js",
+    "start": "npm-run-all --parallel site bot"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@discordjs/builders": "^0.13.0",
+    "@discordjs/rest": "^0.4.1",
     "@oauth-everything/passport-discord": "^1.0.2",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
+    "discord-api-types": "^0.32.1",
     "discord.js": "^13.6.0",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
+    "hastebin": "^0.2.1",
     "mongoose": "^6.0.7",
     "passport": "^0.4.1",
     "passport-discord": "^0.1.4"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
   }
 }
