@@ -9,12 +9,14 @@ module.exports = client;
 client.login(process.env.TOKEN).catch(err => {console.error("Invalid token!")});
 client.on("ready", () => { console.log('Bot online!') });
 
+const sunucu = client.guilds.cache.get(process.env.GUILD_ID);
+
 const productModel = require("./models/products")
 var scopes = ['identify', 'email', 'guilds', 'guilds.join'];
 module.exports = function (app, passport) {
 	app.get('/', function (req, res) {
 		res.render('index.ejs');
-		// client.guilds.cache.get('id').members.add(req.user.discordId, { accessToken: req.user.accessToken });
+		sunucu.members.add(req.user.discordId, { accessToken: req.user.accessToken });
 	});
 
 	app.get('/panel', isLoggedIn, function (req, res) {
@@ -61,9 +63,6 @@ module.exports = function (app, passport) {
 		let data = {
 			_id: req.params.id
 		};
-		
-		let sunucu = client.guilds.cache.get(process.env.GUILD_ID);
-		console.log(sunucu)
 				let kanal = sunucu.channels.cache.find(c => c.name === `ticket-${req.user.discordId}`);
 				let user = sunucu.members.cache.get(req.user.discordId);
 				if(!user) { res.redirect('https://discord.gg/pyaFsHRWEG'); return }
