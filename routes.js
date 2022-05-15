@@ -190,7 +190,7 @@ function isLoggedIn(req, res, next) {
 client.on('messageCreate', async message => {
 	let kanal = message.guild.channels.cache.find(c => c.id === `${message.channel.id}`);
 if (message.content == `${prefix}close`) {
-	if(!message.member.roles.cache.has(process.env.SUPPORT_ROLE)) return;
+	if(!message.member.roles.cache.has(process.env.SUPPORT_ROLE)) { message.reply('You don\'t have permission.'); return; }
     if(!message.channel.name.includes("ticket")) return;
     const closemebed = new MessageEmbed()
       .setDescription(`Ticket will be deleted in 5 seconds`)
