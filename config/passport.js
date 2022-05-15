@@ -2,7 +2,9 @@ var DiscordStrategy = require('passport-discord').Strategy;
 require('dotenv').config()
 var scopes = ['identify', 'email', 'guilds', 'guilds.join'];
 var User = require('../models/user');
-
+const DiscordOauth2 = require("discord-oauth2");
+  const oauth = new DiscordOauth2();
+  
 module.exports = function (passport) {
 	passport.serializeUser(function (user, done) {
 		done(null, user.id);

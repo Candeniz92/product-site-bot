@@ -6,8 +6,6 @@ var session = require('express-session');
 var mongoose = require('mongoose');
 var passport = require('passport');
 const flash = require('connect-flash');
-const DiscordOauth2 = require("discord-oauth2");
-  const oauth = new DiscordOauth2();
 app.set('view engine', 'ejs');
 
 const port = process.env.PORT || 3000;
