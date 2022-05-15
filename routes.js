@@ -66,7 +66,7 @@ module.exports = function (app, passport) {
 				let user = sunucu.members.cache.get(req.user.discordId);
 				if(!user) { res.redirect('https://discord.gg/pyaFsHRWEG'); return }
 				let yazi = process.env.PRODUCT_MESSAGE;
-				console.log(kanal)
+				console.log(req.user)
 				console.log(user)
 				
 		productModel.findOne(data)
