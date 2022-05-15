@@ -63,11 +63,10 @@ module.exports = function (app, passport) {
 		
 		let sunucu = client.guilds.cache.get(process.env.GUILD_ID);
 				let kanal = sunucu.channels.cache.find(c => c.name === `ticket-${req.user.discordId}`);
-				let user = sunucu.members.cache.get(req.user.discordId);
+				let user = sunucu.members.fetch(req.user.discordId);
 				if(!user) { res.redirect('https://discord.gg/pyaFsHRWEG'); return }
 				let yazi = process.env.PRODUCT_MESSAGE;
-				console.log(req.user)
-				console.log(user)
+				console.log(req.user.discordId)
 				
 		productModel.findOne(data)
 			.then(data => {
