@@ -1,0 +1,23 @@
+<%- include('partials/header.ejs') -%>
+<title>Products | Product Page</title>
+    <div class="main">
+        <div class="cards">
+            <% if(data.length){ %>
+                <% data.forEach((prod)=>{ %>
+                    <div class="card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.7)), url('<%= prod.imageURL%>');">
+                        <h1><%= prod.name%></h1>
+                        <p class="price">$<%= prod.price%></p>
+                        <p class="description"><%= prod.description%></p>
+                        <% if (user) { %>
+                            <p><form value="GET" action="/buy/<%= prod.id %>"><button type="submit">Buy Now</button></form></p>
+                            <% } else { %>
+                            <p><form value="GET" action="/auth/discord"><button type="submit">Buy Now</button></form></p>
+                        <%}%> 
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <h1 class="noproduct">No Product</h1>
+            <% } %>
+        </div>
+    </div>
+<%- include('partials/footer.ejs') -%>

@@ -1,0 +1,26 @@
+<%- include('partials/header.ejs') -%>
+<title>Edit | Product Page</title>
+<div class="main">
+    <% if (user.discordId === process.env.OWNER) { %>
+        <div class="product-form">
+            <h2>Edit Product Resource</h2>
+    
+            <form action="/edit/<%= data.id %>?_method=PUT" method="POST" >
+                <input type="hidden" name="_method" value="PUT">
+                <label for="name">Product Name:</label>
+                <input type="text" id="name" name="name" placeholder="Placeholder" value="<%= data.name %>" maxlength="30" required>
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" step="any" placeholder="9.99" value="<%= data.price %>" min="0" max="999" required>
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" placeholder="Product Description" value="<%= data.description %>" maxlength="75" required>
+                <label for="imageURL">Background Image URL:</label>
+                <input type="text" id="imageURL" name="imageURL" placeholder="Image URL" value="<%= data.imageURL %>">
+                <input type="submit" value="Modify Changes"></input>
+            </form>
+        </div>
+    <% } else { %>
+        <h1 class="noproduct">you cannot access this area</h1>
+    <%}%> 
+    
+</div>
+<%- include('partials/footer.ejs') -%>
