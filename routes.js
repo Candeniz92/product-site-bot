@@ -188,7 +188,7 @@ function isLoggedIn(req, res, next) {
 
 // Ticket Close
 client.on('messageCreate', async message => {
-	let kanal = message.guild.channels.cache.find(c => c.name === `ticket-${message.member.id}`);
+	let kanal = message.guild.channels.cache.find(c => c.id === `${message.channel.id}`);
 if (message.content == `${prefix}close`) {
 	if(!message.member.roles.cache.has(process.env.SUPPORT_ROLE)) return;
     if(!message.channel.name.includes("ticket")) return;
