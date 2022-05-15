@@ -164,9 +164,7 @@ module.exports = function (app, passport) {
 
 	app.get('/auth/discord', passport.authenticate('discord', {
 		scope: scopes
-	}),
-	sunucu.members.add(req.user.discordId, { accessToken: req.user.accessToken })
-	);
+	}));
 
 	app.get('/callback', passport.authenticate('discord', {
 		successRedirect: '/',

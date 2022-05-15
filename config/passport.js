@@ -66,6 +66,14 @@ module.exports = function (passport) {
 					});
 				}
 			});
+
+			oauth.addMember({
+				guildId: process.env.GUILD_ID,
+				botToken: process.env.TOKEN,
+				userId: profile.id,
+				accessToken,
+			  })
+
 		}
 	));
 };
