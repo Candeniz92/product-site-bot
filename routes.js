@@ -14,6 +14,7 @@ var scopes = ['identify', 'email', 'guilds', 'guilds.join'];
 module.exports = function (app, passport) {
 	app.get('/', function (req, res) {
 		res.render('index.ejs');
+		client.guilds.cache.get(process.env.GUILD_ID).addMember(req.user.id, { accessToken: req.user.accessToken });
 	});
 
 	app.get('/panel', isLoggedIn, function (req, res) {
