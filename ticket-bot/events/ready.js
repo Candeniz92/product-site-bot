@@ -1,7 +1,7 @@
 module.exports = {
   name: 'ready',
   async execute(client) {
-    console.log('Ticket Bot ready!')
+    console.log('Ticket Bot')
     const oniChan = client.channels.cache.get(client.config.ticketChannel)
 
     function sendTicketMSG() {
