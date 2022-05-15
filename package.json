@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node ./server.js && node ./ticket-bot/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,7 +19,6 @@
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "mongoose": "^6.0.7",
-    "nodemon": "^2.0.12",
     "passport": "^0.4.1",
     "passport-discord": "^0.1.4"
   }
