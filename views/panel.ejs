@@ -1,0 +1,29 @@
+<%- include('partials/header.ejs') -%>
+<title>Panel | Product Page</title>
+    <body>
+        <div class="main">
+            <% if (user.discordId === process.env.OWNER) { %>
+                <p><form value="GET" action="/products/create"><button class="createBtn" type="submit" >Create Resource <i class="fa fa-plus" style="padding-left: 8px; font-size:14px"></i></button></form></p>
+                <div class="cards">
+                    <% if(data.length){ %>
+                        <% data.forEach((prod)=>{ %>
+                                    <div class="card" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.7)), url('<%= prod.imageURL%>');">
+                                        <h1><%= prod.name%></h1>
+                                        <p class="price">$<%= prod.price%></p>
+                                        <p class="description"><%= prod.description%></p>
+                                        <p><form value="GET" action="/buy/<%= prod.id %>"><button type="submit">Buy Now</button></form></p>
+                                        <p><form value="GET" action="/edit/<%= prod.id %>"><button type="submit">Edit</button></form></p>
+                                        <p><form value="GET" action="/delete/<%= prod.id %>"><button type="submit">Delete</button></form></p>
+                                    </div>
+                        <% }) %>
+                    <% }
+                    else{ %>
+                        <h1 class="noproduct">No Product</h1>
+                    <% } %>
+                </div>
+            <% } else { %>
+            <h1 class="noproduct">you cannot access this area</h1>
+            <%}%> 
+        </div>
+    </body>
+<%- include('partials/footer.ejs') -%>

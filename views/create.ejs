@@ -1,0 +1,25 @@
+<%- include('partials/header.ejs') -%>
+<title>Create | Product Page</title>
+    <div class="main">
+        <% if (user.discordId === process.env.OWNER) { %>
+            <div class="product-form">
+                <h2>Create Product</h2>
+            
+                    <form action="/send" method="post">
+                        <label for="name">Product Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Placeholder" value="" maxlength="30" required>
+                        <label for="price">Price:</label>
+                        <input type="number" id="price" name="price" step="any" placeholder="9.99" value="" min="0" max="999" required>
+                        <label for="description">Description:</label>
+                        <input type="text" id="description" name="description" placeholder="Product Description" value="" maxlength="75" required>
+                        <label for="imageURL">Background Image URL:</label>
+                        <input type="text" id="imageURL" name="imageURL" placeholder="Image URL" value="">
+                        <input type="submit" value="Create Now">
+                      </form> 
+            </div>
+        <% } else { %>
+            <h1 class="noproduct">you cannot access this area</h1>
+        <%}%> 
+    </div>
+
+<%- include('partials/footer.ejs') -%>
